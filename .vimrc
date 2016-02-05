@@ -1,43 +1,58 @@
+set nocompatible              " required
+filetype off                  " required
 set encoding=utf-8
+set nu
+set visualbell t_vb=
+set novisualbell
+set backspace=2
 
-syntax enable
-colorscheme monokai
 
-set cmdheight=2
-set nocompatible
-set backspace=indent,eol,start
-
-filetype off
-
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'fatih/vim-go'
-Plugin 'Shougo/neocomplete'
-Plugin 'Shougo/echodoc.vim'
-Plugin 'majutsushi/tagbar'
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-call vundle#end()
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
-filetype plugin indent on
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
-let g:neocomplete#data_directory = "~/.vim/tmp/swap"
-let g:neocomplete#enable_at_startup = 1
 
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'mitsuhiko/vim-jinja'
 
-let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
 
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
 
-let mapleader = ","
-nmap <F8> :TagbarToggle<CR>
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+syntax on
+
+colors zenburn
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+let g:pymode_rope = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+
+
+
+map <F3> :NERDTreeToggle<CR>
