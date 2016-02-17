@@ -5,7 +5,7 @@ set nu
 set visualbell t_vb=
 set novisualbell
 set backspace=2
-
+set t_Co=256
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -23,14 +23,12 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'mitsuhiko/vim-jinja'
-
+Plugin 'chriskempson/base16-vim'
 
 
 " All of your Plugins must be added before the following line
@@ -38,8 +36,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 syntax on
-
-colors zenburn
+set background=dark
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
